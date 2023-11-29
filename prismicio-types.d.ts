@@ -4,7 +4,94 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type HomepageDocumentDataSlicesSlice = HomepageHeroSlice;
+/**
+ * Item in *Case → Images*
+ */
+export interface CaseDocumentDataImagesItem {
+  /**
+   * Image field in *Case → Images*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: case.images[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Content for Case documents
+ */
+interface CaseDocumentData {
+  /**
+   * Title field in *Case*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: case.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.TitleField;
+
+  /**
+   * Short Description field in *Case*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: case.short_description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  short_description: prismic.RichTextField;
+
+  /**
+   * Main Image field in *Case*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: case.main_image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  main_image: prismic.ImageField<never>;
+
+  /**
+   * Full Description field in *Case*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: case.full_description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  full_description: prismic.RichTextField;
+
+  /**
+   * Images field in *Case*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: case.images[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  images: prismic.GroupField<Simplify<CaseDocumentDataImagesItem>>;
+}
+
+/**
+ * Case document from Prismic
+ *
+ * - **API ID**: `case`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CaseDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<CaseDocumentData>, "case", Lang>;
+
+type HomepageDocumentDataSlicesSlice = CasesSlice | HomepageHeroSlice;
 
 /**
  * Content for Homepage documents
@@ -159,7 +246,72 @@ export type SettingsDocument<Lang extends string = string> =
     Lang
   >;
 
-export type AllDocumentTypes = HomepageDocument | SettingsDocument;
+export type AllDocumentTypes =
+  | CaseDocument
+  | HomepageDocument
+  | SettingsDocument;
+
+/**
+ * Primary content in *Cases → Primary*
+ */
+export interface CasesSliceDefaultPrimary {
+  /**
+   * Heading field in *Cases → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cases.primary.label
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  label: prismic.RichTextField;
+
+  /**
+   * Button Label field in *Cases → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cases.primary.button_label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_label: prismic.KeyTextField;
+
+  /**
+   * Button Link field in *Cases → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cases.primary.button_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_link: prismic.LinkField;
+}
+
+/**
+ * Default variation for Cases Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CasesSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CasesSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Cases*
+ */
+type CasesSliceVariation = CasesSliceDefault;
+
+/**
+ * Cases Shared Slice
+ *
+ * - **API ID**: `cases`
+ * - **Description**: Cases
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CasesSlice = prismic.SharedSlice<"cases", CasesSliceVariation>;
 
 /**
  * Primary content in *HomepageHero → Primary*
@@ -216,6 +368,9 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      CaseDocument,
+      CaseDocumentData,
+      CaseDocumentDataImagesItem,
       HomepageDocument,
       HomepageDocumentData,
       HomepageDocumentDataSlicesSlice,
@@ -223,6 +378,10 @@ declare module "@prismicio/client" {
       SettingsDocumentData,
       SettingsDocumentDataNavigationItem,
       AllDocumentTypes,
+      CasesSlice,
+      CasesSliceDefaultPrimary,
+      CasesSliceVariation,
+      CasesSliceDefault,
       HomepageHeroSlice,
       HomepageHeroSliceDefaultPrimary,
       HomepageHeroSliceVariation,
