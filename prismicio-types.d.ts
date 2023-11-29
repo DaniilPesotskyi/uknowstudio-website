@@ -161,6 +161,51 @@ export type SettingsDocument<Lang extends string = string> =
 
 export type AllDocumentTypes = HomepageDocument | SettingsDocument;
 
+/**
+ * Primary content in *HomepageHero → Primary*
+ */
+export interface HomepageHeroSliceDefaultPrimary {
+  /**
+   * Secondary Text field in *HomepageHero → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homepage_hero.primary.secondary_text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  secondary_text: prismic.RichTextField;
+}
+
+/**
+ * Default variation for HomepageHero Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HomepageHeroSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<HomepageHeroSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *HomepageHero*
+ */
+type HomepageHeroSliceVariation = HomepageHeroSliceDefault;
+
+/**
+ * HomepageHero Shared Slice
+ *
+ * - **API ID**: `homepage_hero`
+ * - **Description**: HomepageHero
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HomepageHeroSlice = prismic.SharedSlice<
+  "homepage_hero",
+  HomepageHeroSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -178,6 +223,10 @@ declare module "@prismicio/client" {
       SettingsDocumentData,
       SettingsDocumentDataNavigationItem,
       AllDocumentTypes,
+      HomepageHeroSlice,
+      HomepageHeroSliceDefaultPrimary,
+      HomepageHeroSliceVariation,
+      HomepageHeroSliceDefault,
     };
   }
 }
