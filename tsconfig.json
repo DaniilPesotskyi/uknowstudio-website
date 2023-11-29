@@ -20,7 +20,7 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "@/common*": ["./src/components/commons/*"],
+      "@/common*": ["./src/components/common/*"],
       "@/pages*": ["./src/components/pages/*"]
     }
   },
