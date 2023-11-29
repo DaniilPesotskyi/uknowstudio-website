@@ -1,0 +1,42 @@
+.section {
+  padding: 0px 20px;
+  margin-bottom: 160px;
+}
+
+.sectHeading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-top: 20px;
+
+  border-top: 1px solid var(--secondary-clr);
+}
+
+.sectLabel {
+  font-size: 18px;
+  color: var(--secondary-clr);
+}
+
+.container {
+}
+
+@media screen and (min-width: 480px) {
+}
+
+@media screen and (min-width: 768px) {
+  .section {
+    margin-bottom: 170px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .section {
+    padding: 0px 60px;
+    margin-bottom: 210px;
+  }
+
+  .sectHeading {
+    padding-top: 25px;
+  }
+}

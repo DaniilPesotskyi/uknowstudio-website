@@ -4,7 +4,10 @@ import clsx from "clsx";
 
 interface IProps {
   as?: React.ElementType;
+  number: string;
+  title: string;
   className?: string;
+  containerCN?: string
   children: React.ReactNode;
 }
 
@@ -12,15 +15,17 @@ const Section: React.FC<IProps> = ({
   as: Comp = "section",
   className,
   children,
+  number,
+  title,
 }) => {
   return (
     <Comp className={clsx(css.section, className)}>
       <div className={css.sectHeading}>
-        <span className={css.sectLabel}>02/</span>
-        <span className={css.sectLabel}>ОСТАННІ КЕЙСИ</span>
-        <span className={css.sectLabel}>02</span>
+        <span className={css.sectLabel}>{number}/</span>
+        <span className={css.sectLabel}>{title}</span>
+        <span className={css.sectLabel}>{number}/</span>
       </div>
-      <div className={css.container}>{children}</div>
+      <div className={clsx(css.container, className)}>{children}</div>
     </Comp>
   );
 };
