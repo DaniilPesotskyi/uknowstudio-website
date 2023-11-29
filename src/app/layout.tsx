@@ -4,6 +4,8 @@ import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 import { createClient } from "@/prismicio";
 
+import Header from "@/components/common/Header/Header";
+
 const nunito = Nunito({
   subsets: ["cyrillic"],
   weight: ["400", "500", "600", "700"],
@@ -31,7 +33,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="uk">
-      <body className={nunito.className}>{children}</body>
+      <body className={nunito.className}>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }

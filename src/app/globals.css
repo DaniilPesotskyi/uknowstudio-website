@@ -8,6 +8,8 @@
 
   --backdrop-clr: rgba(0, 0, 0, 0.5);
   --backdrop-filter: blur(25px);
+
+  --border-radius: 10px;
 }
 
 * {

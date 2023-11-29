@@ -1,0 +1,88 @@
+.header {
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  max-width: 100%;
+  padding: 40px 20px;
+}
+
+@media screen and (min-width: 768px) {
+}
+
+.logoMobile {
+  font-size: 24px;
+  color: var(--main-text-clr);
+}
+
+.logo {
+  display: none;
+
+  font-size: 24px;
+  color: var(--main-text-clr);
+}
+
+.menuBtn {
+  width: 30px;
+  height: 30px;
+
+  background-color: transparent;
+  border: 0;
+
+  cursor: pointer;
+}
+
+.menuIcon {
+  fill: var(--secondary-clr);
+}
+
+.menuBtn:hover .menuIcon {
+  fill: var(--stroke-clr);
+}
+
+.callBtn {
+  display: block;
+  padding: 13px 26px;
+
+  border: 1px solid var(--secondary-clr);
+  border-radius: var(--border-radius);
+
+  color: var(--main-text-clr);
+}
+
+@media screen and (min-width: 480px) {
+  .container {
+    justify-content: start;
+  }
+
+  .logoMobile {
+    font-size: 32px;
+    margin-right: 40px;
+  }
+
+  .callBtn {
+    margin-left: auto;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .logoMobile {
+    display: none;
+  }
+
+  .logo {
+    display: block;
+    font-size: 32px;
+    margin-right: 40px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+    max-width: 1800px;
+    margin: 0 auto;
+  }
+}
