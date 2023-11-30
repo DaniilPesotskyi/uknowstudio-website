@@ -7,7 +7,7 @@ interface IProps {
   number: string;
   title: string;
   className?: string;
-  containerCN?: string
+  containerCN?: string;
   children: React.ReactNode;
 }
 
@@ -25,7 +25,7 @@ const Section: React.FC<IProps> = ({
         <span className={css.sectLabel}>{title}</span>
         <span className={css.sectLabel}>{number}/</span>
       </div>
-      <div className={clsx(css.container, className)}>{children}</div>
+      <div className={clsx(className)}>{children}</div>
     </Comp>
   );
 };

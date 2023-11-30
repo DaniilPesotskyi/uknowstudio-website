@@ -8,6 +8,7 @@
   align-items: center;
   justify-content: space-between;
 
+  margin-bottom: 50px;
   padding-top: 20px;
 
   border-top: 1px solid var(--secondary-clr);
@@ -18,15 +19,16 @@
   color: var(--secondary-clr);
 }
 
-.container {
-}
-
 @media screen and (min-width: 480px) {
 }
 
 @media screen and (min-width: 768px) {
   .section {
     margin-bottom: 170px;
+  }
+
+  .sectHeading {
+    margin-bottom: 60px;
   }
 }
 
@@ -37,6 +39,7 @@
   }
 
   .sectHeading {
+    margin-bottom: 70px;
     padding-top: 25px;
   }
 }
