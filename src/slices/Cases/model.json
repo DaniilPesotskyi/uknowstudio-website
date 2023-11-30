@@ -37,7 +37,18 @@
           }
         }
       },
-      "items": {}
+      "items": {
+        "case": {
+          "type": "Link",
+          "config": {
+            "label": "Case",
+            "select": "document",
+            "customtypes": [
+              "case"
+            ]
+          }
+        }
+      }
     }
   ]
 }

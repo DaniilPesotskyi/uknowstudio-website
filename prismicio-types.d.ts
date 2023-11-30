@@ -287,6 +287,21 @@ export interface CasesSliceDefaultPrimary {
 }
 
 /**
+ * Primary content in *Cases → Items*
+ */
+export interface CasesSliceDefaultItem {
+  /**
+   * Case field in *Cases → Items*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cases.items[].case
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  case: prismic.ContentRelationshipField<"case">;
+}
+
+/**
  * Default variation for Cases Slice
  *
  * - **API ID**: `default`
@@ -296,7 +311,7 @@ export interface CasesSliceDefaultPrimary {
 export type CasesSliceDefault = prismic.SharedSliceVariation<
   "default",
   Simplify<CasesSliceDefaultPrimary>,
-  never
+  Simplify<CasesSliceDefaultItem>
 >;
 
 /**
@@ -380,6 +395,7 @@ declare module "@prismicio/client" {
       AllDocumentTypes,
       CasesSlice,
       CasesSliceDefaultPrimary,
+      CasesSliceDefaultItem,
       CasesSliceVariation,
       CasesSliceDefault,
       HomepageHeroSlice,

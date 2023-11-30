@@ -10,6 +10,8 @@
   --backdrop-filter: blur(25px);
 
   --border-radius: 10px;
+
+  --transition-duration: 250ms;
 }
 
 * {
