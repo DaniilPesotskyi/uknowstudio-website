@@ -3,7 +3,7 @@ import css from "./index.module.css";
 import { Content, isFilled } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import Section from "@/common/Section/Section";
-import { PrismicNextLink } from "@prismicio/next";
+import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { createClient } from "@/prismicio";
 
 export type CasesProps = SliceComponentProps<Content.CasesSlice>;
@@ -43,24 +43,38 @@ const Cases = async ({ slice }: CasesProps): Promise<JSX.Element> => {
             {slice.primary.button_label}
           </PrismicNextLink>
         </div>
-
-        {/* TODO */}
-        <div className={css.cases}>
-          <ul>
-            {cases.map((item) => (
-              <li key={item?.uid}>
+      </div>
+      {/* TODO */}
+      <div className={css.cases}>
+        <ul className={css.list}>
+          {cases.map((item) => (
+            <li key={item?.uid} className={css.item}>
+              <PrismicNextImage
+                field={item?.data.main_image}
+                className={css.image}
+              />
+              <div className={css.modal}>
                 <PrismicRichText
                   field={item?.data.title}
                   components={{
                     heading2: ({ children }) => (
-                      <h2 className={css.title}>{children}</h2>
+                      <h2 className={css.caseTitle}>{children}</h2>
                     ),
                   }}
                 />
-              </li>
-            ))}
-          </ul>
-        </div>
+                <PrismicRichText
+                  field={item?.data.short_description}
+                  components={{
+                    paragraph: ({ children }) => (
+                      <p className={css.caseDescription}>{children}</p>
+                    ),
+                  }}
+                />
+              </div>
+            </li>
+          ))}
+        </ul>
+        <div className={css.backdrop}></div>
       </div>
     </Section>
   );
