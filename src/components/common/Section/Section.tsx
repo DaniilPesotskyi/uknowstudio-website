@@ -15,6 +15,7 @@ const Section: React.FC<IProps> = ({
   as: Comp = "section",
   className,
   children,
+  containerCN,
   number,
   title,
 }) => {
@@ -25,7 +26,7 @@ const Section: React.FC<IProps> = ({
         <span className={css.sectLabel}>{title}</span>
         <span className={css.sectLabel}>{number}/</span>
       </div>
-      <div className={clsx(className)}>{children}</div>
+      <div className={clsx(containerCN)}>{children}</div>
     </Comp>
   );
 };
