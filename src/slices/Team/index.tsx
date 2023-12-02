@@ -1,12 +1,24 @@
 import css from "./index.module.css";
 
 import Section from "@/common/Section/Section";
-import { Content } from "@prismicio/client";
+import { createClient } from "@/prismicio";
+import { Content, isFilled } from "@prismicio/client";
+import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 
 export type TeamProps = SliceComponentProps<Content.TeamSlice>;
 
-const Team = ({ slice }: TeamProps): JSX.Element => {
+const Team = async ({ slice }: TeamProps): Promise<JSX.Element> => {
+  const client = createClient();
+
+  const members = await Promise.all(
+    slice.items.map((item) => {
+      if (isFilled.contentRelationship(item.member) && item.member.uid) {
+        return client.getByUID("member", item.member.uid);
+      }
+    })
+  );
+
   return (
     <Section
       data-slice-type={slice.slice_type}
@@ -29,6 +41,18 @@ const Team = ({ slice }: TeamProps): JSX.Element => {
           ),
         }}
       />
+      <ul className={css.list}>
+        {members.map((item) => (
+          <li className={css.itemWrap} key={item?.uid}>
+            <div className={css.item}>
+              <PrismicNextImage
+                field={item?.data.image}
+                className={css.image}
+              />
+            </div>
+          </li>
+        ))}
+      </ul>
     </Section>
   );
 };
