@@ -91,7 +91,10 @@ interface CaseDocumentData {
 export type CaseDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<CaseDocumentData>, "case", Lang>;
 
-type HomepageDocumentDataSlicesSlice = CasesSlice | HomepageHeroSlice;
+type HomepageDocumentDataSlicesSlice =
+  | TeamSlice
+  | CasesSlice
+  | HomepageHeroSlice;
 
 /**
  * Content for Homepage documents
@@ -155,6 +158,45 @@ export type HomepageDocument<Lang extends string = string> =
     "homepage",
     Lang
   >;
+
+/**
+ * Content for Member documents
+ */
+interface MemberDocumentData {
+  /**
+   * Image field in *Member*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: member.image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Name field in *Member*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: member.name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  name: prismic.RichTextField;
+}
+
+/**
+ * Member document from Prismic
+ *
+ * - **API ID**: `member`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type MemberDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<MemberDocumentData>, "member", Lang>;
 
 /**
  * Item in *Settings → Navigation*
@@ -249,6 +291,7 @@ export type SettingsDocument<Lang extends string = string> =
 export type AllDocumentTypes =
   | CaseDocument
   | HomepageDocument
+  | MemberDocument
   | SettingsDocument;
 
 /**
@@ -373,6 +416,73 @@ export type HomepageHeroSlice = prismic.SharedSlice<
   HomepageHeroSliceVariation
 >;
 
+/**
+ * Primary content in *Team → Primary*
+ */
+export interface TeamSliceDefaultPrimary {
+  /**
+   * Title field in *Team → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.TitleField;
+
+  /**
+   * Subtitle field in *Team → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  subtitle: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *Team → Items*
+ */
+export interface TeamSliceDefaultItem {
+  /**
+   * Member field in *Team → Items*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team.items[].member
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  member: prismic.ContentRelationshipField<"member">;
+}
+
+/**
+ * Default variation for Team Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TeamSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TeamSliceDefaultPrimary>,
+  Simplify<TeamSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *Team*
+ */
+type TeamSliceVariation = TeamSliceDefault;
+
+/**
+ * Team Shared Slice
+ *
+ * - **API ID**: `team`
+ * - **Description**: Team
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TeamSlice = prismic.SharedSlice<"team", TeamSliceVariation>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -389,6 +499,8 @@ declare module "@prismicio/client" {
       HomepageDocument,
       HomepageDocumentData,
       HomepageDocumentDataSlicesSlice,
+      MemberDocument,
+      MemberDocumentData,
       SettingsDocument,
       SettingsDocumentData,
       SettingsDocumentDataNavigationItem,
@@ -402,6 +514,11 @@ declare module "@prismicio/client" {
       HomepageHeroSliceDefaultPrimary,
       HomepageHeroSliceVariation,
       HomepageHeroSliceDefault,
+      TeamSlice,
+      TeamSliceDefaultPrimary,
+      TeamSliceDefaultItem,
+      TeamSliceVariation,
+      TeamSliceDefault,
     };
   }
 }
