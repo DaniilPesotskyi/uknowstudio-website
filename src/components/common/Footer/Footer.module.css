@@ -1,6 +1,6 @@
 .footer {
   max-width: 100%;
-  padding: 40px 20px;
+  padding: 40px 20px 60px 20px;
 }
 
 .contactForm {
@@ -26,10 +26,19 @@
   display: none;
 }
 
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 40px;
+}
+
 .logoWrap {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  width: 100%;
 }
 
 .logoMobile {
@@ -65,6 +74,30 @@
 .copy {
   font-size: 15px;
   color: var(--secondary-clr);
+}
+
+.socList {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+}
+
+.socItem {
+  width: 50px;
+  height: 50px;
+}
+
+.socLink {
+  display: block;
+  width: 50px;
+  height: 50px;
+}
+
+.icon {
+  width: 50px;
+  height: 50px;
 }
 
 @media screen and (min-width: 480px) {
@@ -104,6 +137,10 @@
     font-size: 32px;
     margin-right: 40px;
   }
+
+  .socList {
+    justify-content: space-around;
+  }
 }
 
 @media screen and (min-width: 1200px) {
@@ -111,6 +148,7 @@
     margin: 0 auto;
     padding-left: 60px;
     padding-right: 60px;
+    padding-bottom: 70px;
   }
 
   .contactForm {
@@ -124,9 +162,27 @@
     font-size: 64px;
   }
 
+  .container {
+    flex-direction: row;
+    gap: 0;
+  }
+
   .logoWrap {
     display: flex;
     justify-content: start;
     gap: 40px;
+
+    width: fit-content;
+  }
+
+  .copy {
+    margin-left: auto;
+  }
+
+  .socList {
+    justify-content: space-between;
+
+    width: 285px;
+    margin-left: 100px;
   }
 }
