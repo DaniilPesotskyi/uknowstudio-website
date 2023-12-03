@@ -1,6 +1,14 @@
+import { createClient } from "@/prismicio";
 import css from "./Footer.module.css";
+import { PrismicNextLink } from "@prismicio/next";
+import { PrismicRichText } from "@prismicio/react";
 
 const Footer: React.FC = async () => {
+  const client = createClient();
+  const footer = await client.getSingle("footer");
+
+  const year = new Date().getFullYear();
+
   return (
     <footer className={css.footer}>
       <a href="" className={css.contactForm}>
@@ -18,7 +26,28 @@ const Footer: React.FC = async () => {
             <MenuIcon className={css.menuIcon} />
           </button>
         </div>
-        <ul></ul>
+        <ul>
+          {footer.data.socials.map((item, index) => (
+            <li key={index}>
+              <PrismicNextLink field={item.link}>
+                {item.icon === "instagram" && "instagram"}
+                {item.icon === "telegram" && "telegram"}
+                {item.icon === "tiktok" && "tiktok"}
+                {item.icon === "youtube" && "youtube"}
+              </PrismicNextLink>
+            </li>
+          ))}
+        </ul>
+        <PrismicRichText
+          field={footer.data.copy_text}
+          components={{
+            paragraph: ({ children }) => (
+              <p className={css.copy}>
+                {year}.{children}
+              </p>
+            ),
+          }}
+        />
       </div>
     </footer>
   );

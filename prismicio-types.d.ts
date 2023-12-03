@@ -91,6 +91,74 @@ interface CaseDocumentData {
 export type CaseDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<CaseDocumentData>, "case", Lang>;
 
+/**
+ * Item in *Footer → Socials*
+ */
+export interface FooterDocumentDataSocialsItem {
+  /**
+   * Icon field in *Footer → Socials*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.socials[].icon
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  icon: prismic.SelectField<"instagram" | "telegram" | "youtube" | "tiktok">;
+
+  /**
+   * Link field in *Footer → Socials*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.socials[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+/**
+ * Content for Footer documents
+ */
+interface FooterDocumentData {
+  /**
+   * Socials field in *Footer*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.socials[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  socials: prismic.GroupField<Simplify<FooterDocumentDataSocialsItem>>;
+
+  /**
+   * Copy Text field in *Footer*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.copy_text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  copy_text: prismic.RichTextField;
+}
+
+/**
+ * Footer document from Prismic
+ *
+ * - **API ID**: `footer`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type FooterDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<FooterDocumentData>,
+    "footer",
+    Lang
+  >;
+
 type HomepageDocumentDataSlicesSlice =
   | ServicesSlice
   | TeamSlice
@@ -345,6 +413,7 @@ export type SettingsDocument<Lang extends string = string> =
 
 export type AllDocumentTypes =
   | CaseDocument
+  | FooterDocument
   | HomepageDocument
   | MemberDocument
   | ServiceDocument
@@ -622,6 +691,9 @@ declare module "@prismicio/client" {
       CaseDocument,
       CaseDocumentData,
       CaseDocumentDataImagesItem,
+      FooterDocument,
+      FooterDocumentData,
+      FooterDocumentDataSocialsItem,
       HomepageDocument,
       HomepageDocumentData,
       HomepageDocumentDataSlicesSlice,
