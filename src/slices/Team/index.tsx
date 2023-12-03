@@ -45,10 +45,12 @@ const Team = async ({ slice }: TeamProps): Promise<JSX.Element> => {
         {members.map((item) => (
           <li className={css.itemWrap} key={item?.uid}>
             <div className={css.item}>
-              <PrismicNextImage
-                field={item?.data.image}
-                className={css.image}
-              />
+              {item?.data.image && (
+                <PrismicNextImage
+                  field={item?.data.image}
+                  className={css.image}
+                />
+              )}
             </div>
           </li>
         ))}
