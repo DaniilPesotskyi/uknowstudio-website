@@ -24,7 +24,8 @@ const Services = async ({ slice }: ServicesProps): Promise<JSX.Element> => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       title="ПОСЛУГИ"
-      number="03"
+      number="04"
+      containerCN={css.container}
     >
       <div>
         <PrismicRichText
@@ -44,15 +45,29 @@ const Services = async ({ slice }: ServicesProps): Promise<JSX.Element> => {
             ),
           }}
         />
-        <ul>
+        <ul className={css.list}>
           {services.map((item) => (
-            <li key={item?.uid}>
+            <li key={item?.uid} className={css.item}>
               <PrismicRichText
                 field={item?.data.title}
                 components={{
-                  heading3: ({ children }) => <h3>{children}</h3>,
+                  heading3: ({ children }) => (
+                    <h3 className={css.servTitle}>{children}</h3>
+                  ),
                 }}
               />
+              <div className={css.price}>
+                <span className={css.priceLabel}>від</span>
+                <PrismicRichText
+                  field={item?.data.price}
+                  components={{
+                    paragraph: ({ children }) => (
+                      <p className={css.priceValue}>{children} грн</p>
+                    ),
+                  }}
+                />
+                <span className={css.priceLabel}>за 1 годину</span>
+              </div>
             </li>
           ))}
         </ul>

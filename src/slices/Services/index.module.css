@@ -1,3 +1,7 @@
+.container {
+  max-width: 100%;
+}
+
 .title {
   margin-bottom: 35px;
 
@@ -21,4 +25,104 @@
   font-size: 55px;
   font-weight: 600;
   color: var(--main-text-clr);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.item {
+  width: 320px;
+  min-height: 385px;
+  padding: 15px;
+
+  border: 1px solid var(--secondary-clr);
+  border-radius: var(--border-radius);
+}
+
+.servTitle {
+  margin-bottom: 30px;
+
+  font-size: 36px;
+  font-weight: 500;
+  color: var(--main-text-clr);
+}
+
+.price {
+  display: flex;
+  align-items: center;
+}
+
+.priceLabel {
+  font-size: 20px;
+  color: var(--main-text-clr);
+}
+
+.priceValue {
+  padding: 8px 13px;
+  margin: 0px 10px 0px 10px;
+
+  border-radius: var(--border-radius);
+  background-color: #c8c8c8;
+
+  font-size: 24px;
+  color: #010101;
+}
+
+@media screen and (min-width: 480px) {
+  .item {
+    width: 340px;
+    padding: 20px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .title {
+    margin-bottom: 40px;
+
+    font-size: 48px;
+  }
+
+  .progressLine {
+    margin-bottom: 40px;
+  }
+
+  .subTitle {
+    max-width: 590px;
+    margin-bottom: 60px;
+
+    font-size: 64px;
+  }
+
+  .list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: start;
+    justify-content: space-around;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+    max-width: 1170px;
+    margin: 0 auto;
+  }
+
+  .title {
+    font-size: 64px;
+  }
+
+  .subTitle {
+    max-width: 870px;
+    margin-bottom: 70px;
+
+    font-size: 96px;
+  }
+
+  .list {
+    justify-content: space-between;
+  }
 }
