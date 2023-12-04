@@ -98,6 +98,14 @@
 .icon {
   width: 50px;
   height: 50px;
+
+  fill: var(--stroke-clr);
+
+  transition: all var(--transition-duration);
+}
+
+.socItem:hover .icon {
+  fill: var(--primary-clr);
 }
 
 @media screen and (min-width: 480px) {
@@ -106,11 +114,36 @@
   }
 
   .contactEmail {
+    position: relative;
     display: block;
 
     font-size: 36px;
     font-weight: 500;
     color: var(--main-text-clr);
+
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .contactEmail::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: calc(-100% + 1px);
+
+    width: 100%;
+    height: 100%;
+    background-color: var(--main-text-clr);
+
+    transition: all 250ms;
+
+    z-index: -1;
+  }
+
+  .contactForm:hover .contactEmail::before {
+    bottom: 0;
+
+    background-color: var(--primary-clr);
   }
 
   .logoMobile {
