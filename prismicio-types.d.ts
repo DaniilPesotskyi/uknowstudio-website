@@ -589,6 +589,51 @@ export type CasesHeroSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *CasesList → Primary*
+ */
+export interface CasesListSliceDefaultPrimary {
+  /**
+   * Heading field in *CasesList → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cases_list.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+}
+
+/**
+ * Default variation for CasesList Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CasesListSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CasesListSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *CasesList*
+ */
+type CasesListSliceVariation = CasesListSliceDefault;
+
+/**
+ * CasesList Shared Slice
+ *
+ * - **API ID**: `cases_list`
+ * - **Description**: CasesList
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CasesListSlice = prismic.SharedSlice<
+  "cases_list",
+  CasesListSliceVariation
+>;
+
+/**
  * Primary content in *HomepageHero → Primary*
  */
 export interface HomepageHeroSliceDefaultPrimary {
@@ -808,6 +853,10 @@ declare module "@prismicio/client" {
       CasesHeroSlice,
       CasesHeroSliceVariation,
       CasesHeroSliceDefault,
+      CasesListSlice,
+      CasesListSliceDefaultPrimary,
+      CasesListSliceVariation,
+      CasesListSliceDefault,
       HomepageHeroSlice,
       HomepageHeroSliceDefaultPrimary,
       HomepageHeroSliceVariation,
