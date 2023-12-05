@@ -11,7 +11,7 @@ const Footer: React.FC = async () => {
 
   return (
     <footer className={css.footer}>
-      <a href="" className={css.contactForm}>
+      <a href="mailto:uknowstudio@gmail.com" className={css.contactForm}>
         <p className={css.contactEmail}>uknowstudio@gmail.com</p>
       </a>
       <div className={css.container}>

@@ -181,12 +181,12 @@
     margin: 0 auto;
     padding-left: 60px;
     padding-right: 60px;
-    padding-bottom: 70px;
+    padding-bottom: 60px;
   }
 
   .contactForm {
     height: 750px;
-    margin-bottom: 70px;
+    margin-bottom: 60px;
 
     border-radius: 50px;
   }

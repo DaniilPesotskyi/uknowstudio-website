@@ -1,6 +1,8 @@
+"use client";
+
 import css from "./Header.module.css";
 
-const Header: React.FC = async () => {
+const Header: React.FC = () => {
   return (
     <header className={css.header}>
       <div className={css.container}>
@@ -13,7 +15,15 @@ const Header: React.FC = async () => {
         <button className={css.menuBtn} type="button">
           <MenuIcon className={css.menuIcon} />
         </button>
-        <a className={css.callBtn} href="/">{`Зв'яжіться з нами`}</a>
+        <button
+          onClick={() => {
+            window.scrollTo({
+              top: document.documentElement.scrollHeight,
+              behavior: "smooth",
+            });
+          }}
+          className={css.callBtn}
+        >{`Зв'яжіться з нами`}</button>
       </div>
     </header>
   );
