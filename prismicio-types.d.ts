@@ -267,7 +267,7 @@ interface MemberDocumentData {
 export type MemberDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<MemberDocumentData>, "member", Lang>;
 
-type PageDocumentDataSlicesSlice = never;
+type PageDocumentDataSlicesSlice = HomepageHeroSlice | CasesHeroSlice;
 
 /**
  * Content for Page documents
@@ -559,6 +559,36 @@ type CasesSliceVariation = CasesSliceDefault;
 export type CasesSlice = prismic.SharedSlice<"cases", CasesSliceVariation>;
 
 /**
+ * Default variation for CasesHero Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CasesHeroSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * Slice variation for *CasesHero*
+ */
+type CasesHeroSliceVariation = CasesHeroSliceDefault;
+
+/**
+ * CasesHero Shared Slice
+ *
+ * - **API ID**: `cases_hero`
+ * - **Description**: CasesHero
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CasesHeroSlice = prismic.SharedSlice<
+  "cases_hero",
+  CasesHeroSliceVariation
+>;
+
+/**
  * Primary content in *HomepageHero → Primary*
  */
 export interface HomepageHeroSliceDefaultPrimary {
@@ -775,6 +805,9 @@ declare module "@prismicio/client" {
       CasesSliceDefaultItem,
       CasesSliceVariation,
       CasesSliceDefault,
+      CasesHeroSlice,
+      CasesHeroSliceVariation,
+      CasesHeroSliceDefault,
       HomepageHeroSlice,
       HomepageHeroSliceDefaultPrimary,
       HomepageHeroSliceVariation,

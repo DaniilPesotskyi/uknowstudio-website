@@ -1,0 +1,115 @@
+.section {
+  padding: 0px 20px;
+  margin-top: 30px;
+  margin-bottom: 150px;
+}
+
+.decoLabel {
+  color: #4b4b4b;
+  font-size: 18px;
+}
+
+.firstLabel {
+  margin-bottom: 30px;
+}
+
+.title {
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 150%;
+  letter-spacing: 0.88px;
+  color: var(--main-text-clr);
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  max-width: 100%;
+  margin-bottom: 130px;
+}
+
+.scrollWrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.scrollBtn {
+  width: 80px;
+  height: 80px;
+
+  background-color: transparent;
+  border: 1px solid var(--secondary-clr);
+  border-radius: 999px;
+}
+
+.scrollIcon {
+  stroke: var(--secondary-clr);
+}
+
+@media screen and (min-width: 480px) {
+  .title {
+    font-size: 48px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .section {
+    margin-top: 35px;
+    margin-bottom: 220px;
+  }
+
+  .firstLabel {
+    margin-bottom: 35px;
+  }
+
+  .title {
+    font-size: 64px;
+  }
+
+  .heading {
+    display: grid;
+    grid-template-columns: auto auto;
+
+    margin-bottom: 200px;
+  }
+
+  .heading > .title:nth-child(1) {
+    text-align: left;
+  }
+
+  .heading > .title:nth-child(2) {
+    text-align: right;
+  }
+
+  .heading > .title:nth-child(3) {
+    text-align: left;
+  }
+
+  .heading > .title:nth-child(4) {
+    text-align: right;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .section {
+    padding: 0px 60px;
+  }
+
+  .heading {
+    max-width: 1170px;
+    margin: 0 auto 190px auto;
+  }
+
+  .title {
+    font-size: 96px;
+  }
+
+  .fieldWithSec {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+  }
+}

@@ -16,7 +16,14 @@
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
-          "choices": {}
+          "choices": {
+            "homepage_hero": {
+              "type": "SharedSlice"
+            },
+            "cases_hero": {
+              "type": "SharedSlice"
+            }
+          }
         }
       }
     },
