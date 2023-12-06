@@ -1,0 +1,35 @@
+.container {
+  max-width: 100%;
+}
+
+.heading {
+  margin-bottom: 35px;
+
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 150.04%;
+  letter-spacing: 0.56px;
+  color: var(--main-text-clr);
+}
+
+@media screen and (min-width: 768px) {
+  .heading {
+    margin-bottom: 40px;
+
+    font-size: 32px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+    max-width: 1170px;
+    margin: 0 auto;
+  }
+
+  .heading {
+    width: 800px;
+    margin-bottom: 50px;
+
+    font-size: 36px;
+  }
+}

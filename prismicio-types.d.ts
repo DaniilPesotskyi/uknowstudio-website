@@ -267,7 +267,10 @@ interface MemberDocumentData {
 export type MemberDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<MemberDocumentData>, "member", Lang>;
 
-type PageDocumentDataSlicesSlice = HomepageHeroSlice | CasesHeroSlice;
+type PageDocumentDataSlicesSlice =
+  | CasesListSlice
+  | HomepageHeroSlice
+  | CasesHeroSlice;
 
 /**
  * Content for Page documents
