@@ -1,21 +1,17 @@
 import css from "./index.module.css";
 
 import Section from "@/common/Section/Section";
-import Filters from "@/pages/Cases/Filters/Filters";
+import List from "@/pages/Cases/List/List";
+import { createClient } from "@/prismicio";
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 
 export type CasesListProps = SliceComponentProps<Content.CasesListSlice>;
 
-const CasesList = ({ slice }: CasesListProps): JSX.Element => {
-  const filters = [
-    "Photoset",
-    "Video",
-    "Motion",
-    "Montage",
-    "Travel",
-    "Family",
-  ];
+const CasesList = async ({ slice }: CasesListProps): Promise<JSX.Element> => {
+  const client = createClient();
+
+  const cases = await client.getAllByType("case");
 
   return (
     <Section
@@ -34,7 +30,7 @@ const CasesList = ({ slice }: CasesListProps): JSX.Element => {
         }}
       />
 
-      <Filters elements={filters} />
+      <List elements={cases} />
     </Section>
   );
 };

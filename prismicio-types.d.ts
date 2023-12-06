@@ -20,6 +20,21 @@ export interface CaseDocumentDataImagesItem {
 }
 
 /**
+ * Item in *Case → Tags*
+ */
+export interface CaseDocumentDataTagsItem {
+  /**
+   * Tag field in *Case → Tags*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: case.tags[].tag
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  tag: prismic.KeyTextField;
+}
+
+/**
  * Content for Case documents
  */
 interface CaseDocumentData {
@@ -77,6 +92,17 @@ interface CaseDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#group
    */
   images: prismic.GroupField<Simplify<CaseDocumentDataImagesItem>>;
+
+  /**
+   * Tags field in *Case*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: case.tags[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  tags: prismic.GroupField<Simplify<CaseDocumentDataTagsItem>>;
 }
 
 /**
@@ -831,6 +857,7 @@ declare module "@prismicio/client" {
       CaseDocument,
       CaseDocumentData,
       CaseDocumentDataImagesItem,
+      CaseDocumentDataTagsItem,
       FooterDocument,
       FooterDocumentData,
       FooterDocumentDataSocialsItem,
