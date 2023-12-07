@@ -4,26 +4,26 @@ import { useState } from "react";
 import css from "./List.module.css";
 
 import clsx from "clsx";
-import { CaseDocument } from "../../../../../prismicio-types";
+import { CaseDocument } from "@/../prismicio-types";
+import { KeyTextField } from "@prismicio/client";
 
 interface IProps {
   elements: CaseDocument<string>[];
 }
 
 const List: React.FC<IProps> = ({ elements }) => {
-  const [filters, setFilters] = useState<string[]>([]);
+  const [filters, setFilters] = useState<KeyTextField[]>([]);
 
-  const filtersList = [
-    "Photoset",
-    "Video",
-    "Motion",
-    "Montage",
-    "Travel",
-    "Family",
-  ];
+  const getFilters = (): any[] => {
+    let filterSet = new Set();
 
-  const setAllFilters = () => {
-    setFilters([]);
+    elements.forEach((el) => {
+      el.data.tags.forEach((tag) => {
+        filterSet.add(tag.tag);
+      });
+    });
+
+    return Array.from(filterSet);
   };
 
   const onFilterClick = (i: string) => {
@@ -35,6 +35,20 @@ const List: React.FC<IProps> = ({ elements }) => {
     setFilters([...filters, i]);
   };
 
+  const getFilteredContacts = () => {
+    let filteredContacts: any[] = [];
+
+    elements.forEach((el) => {
+      if (el.data.tags.some((tag) => filters.includes(tag.tag))) {
+        filteredContacts.push(el);
+      }
+    });
+
+    return filteredContacts;
+  };
+  const contactsToRender =
+    getFilteredContacts().length === 0 ? elements : getFilteredContacts();
+
   return (
     <div>
       <ul className={css.list}>
@@ -42,13 +56,13 @@ const List: React.FC<IProps> = ({ elements }) => {
           className={clsx(
             css.item,
             filters.length === 0 && css.active,
-            filters.length === filtersList.length && css.active
+            filters.length === getFilters().length && css.active
           )}
-          onClick={setAllFilters}
+          onClick={() => setFilters([])}
         >
           All
         </li>
-        {filtersList.map((el) => (
+        {getFilters().map((el) => (
           <li
             className={clsx(css.item, filters.includes(el) && css.active)}
             key={el}
@@ -59,8 +73,10 @@ const List: React.FC<IProps> = ({ elements }) => {
         ))}
       </ul>
       <ul>
-        {elements.map(({ data }, index) => (
-          <li key={index}>CASE</li>
+        {contactsToRender.map((el, index) => (
+          <li style={{ color: "white" }} key={index}>
+            CASE
+          </li>
         ))}
       </ul>
     </div>
