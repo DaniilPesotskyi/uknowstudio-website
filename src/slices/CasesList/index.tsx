@@ -21,14 +21,16 @@ const CasesList = async ({ slice }: CasesListProps): Promise<JSX.Element> => {
       title="ВСІ КЕЙСИ"
       containerCN={css.container}
     >
-      <PrismicRichText
-        field={slice.primary.heading}
-        components={{
-          paragraph: ({ children }) => (
-            <p className={css.heading}>{children}</p>
-          ),
-        }}
-      />
+      <div className={css.headingContainer}>
+        <PrismicRichText
+          field={slice.primary.heading}
+          components={{
+            paragraph: ({ children }) => (
+              <p className={css.heading}>{children}</p>
+            ),
+          }}
+        />
+      </div>
 
       <List elements={cases} />
     </Section>

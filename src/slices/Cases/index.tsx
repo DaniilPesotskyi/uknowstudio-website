@@ -5,6 +5,7 @@ import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import Section from "@/common/Section/Section";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { createClient } from "@/prismicio";
+import CaseItem from "@/components/common/CaseItem/Caseitem";
 
 export type CasesProps = SliceComponentProps<Content.CasesSlice>;
 
@@ -44,34 +45,10 @@ const Cases = async ({ slice }: CasesProps): Promise<JSX.Element> => {
           </PrismicNextLink>
         </div>
       </div>
-      {/* TODO */}
       <div className={css.cases}>
         <ul className={css.list}>
-          {cases.map((item) => (
-            <li key={item?.uid} className={css.item}>
-              <PrismicNextImage
-                field={item?.data.main_image}
-                className={css.image}
-              />
-              <div className={css.modal}>
-                <PrismicRichText
-                  field={item?.data.title}
-                  components={{
-                    heading2: ({ children }) => (
-                      <h2 className={css.caseTitle}>{children}</h2>
-                    ),
-                  }}
-                />
-                <PrismicRichText
-                  field={item?.data.short_description}
-                  components={{
-                    paragraph: ({ children }) => (
-                      <p className={css.caseDescription}>{children}</p>
-                    ),
-                  }}
-                />
-              </div>
-            </li>
+          {cases.map((item, index) => (
+            <CaseItem key={index} item={item} />
           ))}
         </ul>
         <div className={css.backdrop}></div>

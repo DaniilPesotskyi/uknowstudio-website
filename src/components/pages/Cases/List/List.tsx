@@ -6,6 +6,7 @@ import css from "./List.module.css";
 import clsx from "clsx";
 import { CaseDocument } from "@/../prismicio-types";
 import { KeyTextField } from "@prismicio/client";
+import CaseItem from "@/components/common/CaseItem/Caseitem";
 
 interface IProps {
   elements: CaseDocument<string>[];
@@ -50,8 +51,8 @@ const List: React.FC<IProps> = ({ elements }) => {
     getFilteredContacts().length === 0 ? elements : getFilteredContacts();
 
   return (
-    <div>
-      <ul className={css.list}>
+    <>
+      <ul className={css.filtersList}>
         <li
           className={clsx(
             css.item,
@@ -72,14 +73,12 @@ const List: React.FC<IProps> = ({ elements }) => {
           </li>
         ))}
       </ul>
-      <ul>
+      <ul className={css.casesList}>
         {contactsToRender.map((el, index) => (
-          <li style={{ color: "white" }} key={index}>
-            CASE
-          </li>
+          <CaseItem key={index} item={el} />
         ))}
       </ul>
-    </div>
+    </>
   );
 };
 
