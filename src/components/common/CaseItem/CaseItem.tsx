@@ -20,6 +20,14 @@ const CaseItem: React.FC<IProps> = ({ item }) => {
             ),
           }}
         />
+        <PrismicRichText
+          field={item?.data.short_description}
+          components={{
+            paragraph: ({ children }) => (
+              <p className={css.description}>{children}</p>
+            ),
+          }}
+        />
       </div>
       <PrismicNextImage field={item?.data.main_image} className={css.image} />
     </li>
