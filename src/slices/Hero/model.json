@@ -1,0 +1,111 @@
+{
+  "id": "homepage_hero",
+  "type": "SharedSlice",
+  "name": "Hero",
+  "description": "HomepageHero",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "first_word": {
+          "type": "StructuredText",
+          "config": {
+            "label": "First Word",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,strong,em"
+          }
+        },
+        "second_word": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Second Word",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,strong,em"
+          }
+        },
+        "third_word": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Third Word",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,strong,em"
+          }
+        },
+        "fourth_word": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Fourth Word",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,em,strong"
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "withSubtext",
+      "name": "With Subtext",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "secondary_text": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Secondary Text",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,strong,em"
+          }
+        },
+        "first_word": {
+          "type": "StructuredText",
+          "config": {
+            "label": "First Word",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,strong,em"
+          }
+        },
+        "second_word": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Second Word",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,strong,em"
+          }
+        },
+        "third_word": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Third Word",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,strong,em"
+          }
+        },
+        "fourth_word": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Fourth Word",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,em,strong"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"first_word": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Est id sunt mollit laboris consequat tempor."
+						}
+					}
+				]
+			},
+			"second_word": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Exercitation laboris cillum ut nostrud nostrud id sit laboris veniam do do. Exercitation et consectetur officia reprehenderit sit laborum ut fugiat non mollit dolore consequat excepteur nostrud. Labore proident esse proident adipisicing voluptate."
+						}
+					}
+				]
+			},
+			"third_word": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Cillum excepteur mollit cupidatat non commodo Lorem ipsum. Eiusmod non esse cillum. Laborum quis incididunt laborum ad sit dolore."
+						}
+					}
+				]
+			},
+			"fourth_word": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Cillum ea eiusmod occaecat."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "withSubtext",
+		"primary": {
+			"secondary_text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Ut nulla sint dolor amet laborum ad anim irure. Eu adipisicing labore sunt anim irure adipisicing pariatur qui. Voluptate excepteur deserunt et anim dolor cupidatat in."
+						}
+					}
+				]
+			},
+			"first_word": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Enim dolore incididunt aliqua Lorem id mollit occaecat et elit esse Lorem ea labore nostrud. Cillum irure sunt cillum commodo eiusmod amet. Deserunt ipsum esse cupidatat veniam duis labore aliqua Lorem commodo laborum deserunt mollit aliqua consectetur ipsum."
+						}
+					}
+				]
+			},
+			"second_word": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Irure aliqua aliqua ea commodo magna commodo voluptate laborum minim sunt cillum voluptate pariatur voluptate consectetur. Reprehenderit ex veniam anim quis amet nisi fugiat proident enim ad aliquip officia non dolor. Aliquip pariatur est velit elit consectetur."
+						}
+					}
+				]
+			},
+			"third_word": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Excepteur voluptate mollit eu aliqua eiusmod et esse veniam Lorem sint. Minim tempor culpa est veniam ullamco incididunt nisi id veniam duis anim excepteur. Adipisicing labore reprehenderit cupidatat labore magna eiusmod laborum id id consectetur ipsum commodo."
+						}
+					}
+				]
+			},
+			"fourth_word": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Ullamco duis labore nostrud qui ullamco velit eu culpa laboris nisi Lorem dolor est. Quis proident quis Lorem ut nisi excepteur officia nostrud elit. Tempor elit fugiat ullamco ex officia consequat cillum veniam minim ex."
+						}
+					}
+				]
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	}
+]

@@ -293,10 +293,7 @@ interface MemberDocumentData {
 export type MemberDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<MemberDocumentData>, "member", Lang>;
 
-type PageDocumentDataSlicesSlice =
-  | CasesListSlice
-  | HomepageHeroSlice
-  | CasesHeroSlice;
+type PageDocumentDataSlicesSlice = CasesListSlice | HomepageHeroSlice;
 
 /**
  * Content for Page documents
@@ -588,36 +585,6 @@ type CasesSliceVariation = CasesSliceDefault;
 export type CasesSlice = prismic.SharedSlice<"cases", CasesSliceVariation>;
 
 /**
- * Default variation for CasesHero Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type CasesHeroSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Record<string, never>,
-  never
->;
-
-/**
- * Slice variation for *CasesHero*
- */
-type CasesHeroSliceVariation = CasesHeroSliceDefault;
-
-/**
- * CasesHero Shared Slice
- *
- * - **API ID**: `cases_hero`
- * - **Description**: CasesHero
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type CasesHeroSlice = prismic.SharedSlice<
-  "cases_hero",
-  CasesHeroSliceVariation
->;
-
-/**
  * Primary content in *CasesList → Primary*
  */
 export interface CasesListSliceDefaultPrimary {
@@ -663,22 +630,52 @@ export type CasesListSlice = prismic.SharedSlice<
 >;
 
 /**
- * Primary content in *HomepageHero → Primary*
+ * Primary content in *Hero → Primary*
  */
 export interface HomepageHeroSliceDefaultPrimary {
   /**
-   * Secondary Text field in *HomepageHero → Primary*
+   * First Word field in *Hero → Primary*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: homepage_hero.primary.secondary_text
+   * - **API ID Path**: homepage_hero.primary.first_word
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  secondary_text: prismic.RichTextField;
+  first_word: prismic.RichTextField;
+
+  /**
+   * Second Word field in *Hero → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homepage_hero.primary.second_word
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  second_word: prismic.RichTextField;
+
+  /**
+   * Third Word field in *Hero → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homepage_hero.primary.third_word
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  third_word: prismic.RichTextField;
+
+  /**
+   * Fourth Word field in *Hero → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homepage_hero.primary.fourth_word
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  fourth_word: prismic.RichTextField;
 }
 
 /**
- * Default variation for HomepageHero Slice
+ * Default variation for Hero Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
@@ -691,12 +688,82 @@ export type HomepageHeroSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
- * Slice variation for *HomepageHero*
+ * Primary content in *Hero → Primary*
  */
-type HomepageHeroSliceVariation = HomepageHeroSliceDefault;
+export interface HomepageHeroSliceWithSubtextPrimary {
+  /**
+   * Secondary Text field in *Hero → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homepage_hero.primary.secondary_text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  secondary_text: prismic.RichTextField;
+
+  /**
+   * First Word field in *Hero → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homepage_hero.primary.first_word
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  first_word: prismic.RichTextField;
+
+  /**
+   * Second Word field in *Hero → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homepage_hero.primary.second_word
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  second_word: prismic.RichTextField;
+
+  /**
+   * Third Word field in *Hero → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homepage_hero.primary.third_word
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  third_word: prismic.RichTextField;
+
+  /**
+   * Fourth Word field in *Hero → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homepage_hero.primary.fourth_word
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  fourth_word: prismic.RichTextField;
+}
 
 /**
- * HomepageHero Shared Slice
+ * With Subtext variation for Hero Slice
+ *
+ * - **API ID**: `withSubtext`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HomepageHeroSliceWithSubtext = prismic.SharedSliceVariation<
+  "withSubtext",
+  Simplify<HomepageHeroSliceWithSubtextPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Hero*
+ */
+type HomepageHeroSliceVariation =
+  | HomepageHeroSliceDefault
+  | HomepageHeroSliceWithSubtext;
+
+/**
+ * Hero Shared Slice
  *
  * - **API ID**: `homepage_hero`
  * - **Description**: HomepageHero
@@ -880,17 +947,16 @@ declare module "@prismicio/client" {
       CasesSliceDefaultItem,
       CasesSliceVariation,
       CasesSliceDefault,
-      CasesHeroSlice,
-      CasesHeroSliceVariation,
-      CasesHeroSliceDefault,
       CasesListSlice,
       CasesListSliceDefaultPrimary,
       CasesListSliceVariation,
       CasesListSliceDefault,
       HomepageHeroSlice,
       HomepageHeroSliceDefaultPrimary,
+      HomepageHeroSliceWithSubtextPrimary,
       HomepageHeroSliceVariation,
       HomepageHeroSliceDefault,
+      HomepageHeroSliceWithSubtext,
       ServicesSlice,
       ServicesSliceDefaultPrimary,
       ServicesSliceDefaultItem,
