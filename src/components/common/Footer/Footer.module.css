@@ -53,24 +53,6 @@
   color: var(--main-text-clr);
 }
 
-.menuBtn {
-  width: 30px;
-  height: 30px;
-
-  background-color: transparent;
-  border: 0;
-
-  cursor: pointer;
-}
-
-.menuIcon {
-  fill: var(--secondary-clr);
-}
-
-.menuBtn:hover .menuIcon {
-  fill: var(--stroke-clr);
-}
-
 .copy {
   font-size: 15px;
   color: var(--secondary-clr);

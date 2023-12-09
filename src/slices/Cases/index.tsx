@@ -5,7 +5,7 @@ import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import Section from "@/common/Section/Section";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { createClient } from "@/prismicio";
-import CaseItem from "@/components/common/CaseItem/Caseitem";
+import CaseItem from "@/components/common/CaseItem/CaseItem";
 
 export type CasesProps = SliceComponentProps<Content.CasesSlice>;
 

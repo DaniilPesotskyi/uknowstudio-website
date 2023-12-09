@@ -1,0 +1,128 @@
+.menuBtn {
+  width: 30px;
+  height: 30px;
+
+  background-color: transparent;
+  border: 0;
+
+  cursor: pointer;
+}
+
+.menuIcon {
+  fill: var(--secondary-clr);
+}
+
+.menuBtn:hover .menuIcon {
+  fill: var(--stroke-clr);
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--backdrop-clr);
+  backdrop-filter: var(--backdrop-filter);
+  overflow: auto;
+  z-index: 10;
+}
+
+.container {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.closeBtn {
+  display: block;
+
+  width: 75px;
+  height: 75px;
+  margin-left: auto;
+  margin-bottom: 50px;
+
+  border: 0;
+  background: transparent;
+
+  cursor: pointer;
+}
+
+.closeIcon {
+  fill: var(--stroke-clr);
+
+  transition: all var(--transition-duration);
+}
+
+.closeBtn:hover .closeIcon {
+  fill: var(--primary-clr);
+}
+
+.menuList {
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
+}
+
+.item {
+  overflow: hidden;
+}
+
+.link {
+  position: relative;
+
+  width: fit-content;
+  padding: 5px 0px;
+
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 150.04%;
+  letter-spacing: 0.8px;
+  color: var(--main-text-clr);
+
+  transition: all var(--transition-duration);
+
+  z-index: 1;
+
+  overflow: hidden;
+}
+
+.link::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: calc(-100% + 1px);
+
+  width: 100%;
+  height: 100%;
+  background-color: var(--main-text-clr);
+
+  transition: all 250ms;
+
+  z-index: -1;
+}
+
+.link:hover::before {
+  bottom: 0;
+
+  background-color: var(--primary-clr);
+}
+
+@media screen and (min-width: 480px) {
+  .link {
+    font-size: 48px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .link {
+    font-size: 64px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+    max-width: 1170px;
+    padding: 50px 0px;
+    margin: 0 auto;
+  }
+}
