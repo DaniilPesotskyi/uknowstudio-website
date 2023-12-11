@@ -8,7 +8,7 @@ import {
   SettingsDocumentDataNavigationItem,
   Simplify,
 } from "../../../../prismicio-types";
-import Link from "next/link";
+import { motion } from "framer-motion";
 
 interface IProps {
   navItems: GroupField<Simplify<SettingsDocumentDataNavigationItem>>;
@@ -16,6 +16,21 @@ interface IProps {
 
 const Menu: React.FC<IProps> = ({ navItems }) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const backdropVariants = {
+    visible: {
+      opacity: 1,
+      transition: {
+        delayChildren: 0.3,
+      },
+    },
+    hidden: {
+      opacity: 0,
+      transition: {
+        delay: 0.3,
+      },
+    },
+  };
 
   return (
     <>
@@ -27,7 +42,13 @@ const Menu: React.FC<IProps> = ({ navItems }) => {
         <MenuIcon className={css.menuIcon} />
       </button>
       {isOpen && (
-        <div className={css.backdrop}>
+        <motion.div
+          className={css.backdrop}
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          variants={backdropVariants}
+        >
           <div className={css.container}>
             <button
               className={css.closeBtn}
@@ -36,20 +57,20 @@ const Menu: React.FC<IProps> = ({ navItems }) => {
             >
               <CloseIcon className={css.closeIcon} />
             </button>
-            <nav className={css.menuList}>
+            <motion.nav className={css.menuList}>
               {navItems.map((item, index) => (
-                <PrismicNextLink
-                  key={index}
-                  field={item.link}
-                  className={css.link}
-                  onClick={() => setIsOpen(!isOpen)}
-                >
-                  {item.label}
-                </PrismicNextLink>
+                <motion.div key={index} className={css.link}>
+                  <PrismicNextLink
+                    field={item.link}
+                    onClick={() => setIsOpen(!isOpen)}
+                  >
+                    {item.label}
+                  </PrismicNextLink>
+                </motion.div>
               ))}
-            </nav>
+            </motion.nav>
           </div>
-        </div>
+        </motion.div>
       )}
     </>
   );
