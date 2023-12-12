@@ -10,6 +10,8 @@
 
 .menuIcon {
   fill: var(--secondary-clr);
+
+  transition: all var(--transition-duration);
 }
 
 .menuBtn:hover .menuIcon {

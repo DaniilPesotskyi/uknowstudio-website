@@ -8,7 +8,7 @@ import {
   SettingsDocumentDataNavigationItem,
   Simplify,
 } from "../../../../prismicio-types";
-import { Variants, motion } from "framer-motion";
+import { AnimatePresence, Variants, motion } from "framer-motion";
 
 interface IProps {
   navItems: GroupField<Simplify<SettingsDocumentDataNavigationItem>>;
@@ -43,51 +43,54 @@ const Menu: React.FC<IProps> = ({ navItems }) => {
       >
         <MenuIcon className={css.menuIcon} />
       </button>
-      {isOpen && (
-        <motion.div
-          className={css.backdrop}
-          initial="closed"
-          animate={isOpen ? "open" : "closed"}
-          variants={backdropVariants}
-        >
-          <div className={css.container}>
-            <button
-              className={css.closeBtn}
-              type="button"
-              onClick={() => setIsOpen(!isOpen)}
-            >
-              <CloseIcon className={css.closeIcon} />
-            </button>
-            <motion.nav
-              className={css.menuList}
-              variants={{
-                open: {
-                  transition: {
-                    delayChildren: 0.3,
-                    staggerChildren: 0.3,
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className={css.backdrop}
+            initial="closed"
+            animate="open"
+            exit="closed"
+            variants={backdropVariants}
+          >
+            <div className={css.container}>
+              <button
+                className={css.closeBtn}
+                type="button"
+                onClick={() => setIsOpen(!isOpen)}
+              >
+                <CloseIcon className={css.closeIcon} />
+              </button>
+              <motion.nav
+                className={css.menuList}
+                variants={{
+                  open: {
+                    transition: {
+                      delayChildren: 0.3,
+                      staggerChildren: 0.3,
+                    },
                   },
-                },
-                closed: {},
-              }}
-            >
-              {navItems.map((item, index) => (
-                <motion.div
-                  key={index}
-                  className={css.link}
-                  variants={itemVariants}
-                >
-                  <PrismicNextLink
-                    field={item.link}
-                    onClick={(e) => setIsOpen(!isOpen)}
+                  closed: {},
+                }}
+              >
+                {navItems.map((item, index) => (
+                  <motion.div
+                    key={index}
+                    className={css.link}
+                    variants={itemVariants}
                   >
-                    {item.label}
-                  </PrismicNextLink>
-                </motion.div>
-              ))}
-            </motion.nav>
-          </div>
-        </motion.div>
-      )}
+                    <PrismicNextLink
+                      field={item.link}
+                      onClick={(e) => setIsOpen(!isOpen)}
+                    >
+                      {item.label}
+                    </PrismicNextLink>
+                  </motion.div>
+                ))}
+              </motion.nav>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };
