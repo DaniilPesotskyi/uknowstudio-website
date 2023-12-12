@@ -6,7 +6,7 @@ import css from "./List.module.css";
 import clsx from "clsx";
 import { CaseDocument } from "@/../prismicio-types";
 import { KeyTextField } from "@prismicio/client";
-import CaseItem from "@/components/common/CaseItem/Caseitem";
+import CasesList from "@/components/common/CasesList/CasesList";
 
 interface IProps {
   elements: CaseDocument<string>[];
@@ -73,11 +73,7 @@ const List: React.FC<IProps> = ({ elements }) => {
           </li>
         ))}
       </ul>
-      <ul className={css.casesList}>
-        {contactsToRender.map((el, index) => (
-          <CaseItem key={index} item={el} />
-        ))}
-      </ul>
+      <CasesList items={contactsToRender} />
     </>
   );
 };

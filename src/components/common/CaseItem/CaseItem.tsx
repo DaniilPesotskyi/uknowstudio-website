@@ -1,3 +1,5 @@
+"use client";
+
 import css from "./CaseItem.module.css";
 
 import { PrismicNextImage } from "@prismicio/next";

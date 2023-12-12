@@ -31,7 +31,6 @@ const CasesList = async ({ slice }: CasesListProps): Promise<JSX.Element> => {
           }}
         />
       </div>
-
       <List elements={cases} />
     </Section>
   );

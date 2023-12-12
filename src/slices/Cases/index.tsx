@@ -3,9 +3,9 @@ import css from "./index.module.css";
 import { Content, isFilled } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import Section from "@/common/Section/Section";
-import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
+import { PrismicNextLink } from "@prismicio/next";
 import { createClient } from "@/prismicio";
-import CaseItem from "@/components/common/CaseItem/CaseItem";
+import CasesList from "@/components/common/CasesList/CasesList";
 
 export type CasesProps = SliceComponentProps<Content.CasesSlice>;
 
@@ -46,11 +46,7 @@ const Cases = async ({ slice }: CasesProps): Promise<JSX.Element> => {
         </div>
       </div>
       <div className={css.cases}>
-        <ul className={css.list}>
-          {cases.map((item, index) => (
-            <CaseItem key={index} item={item} />
-          ))}
-        </ul>
+        <CasesList items={cases} />
         <div className={css.backdrop}></div>
       </div>
     </Section>
