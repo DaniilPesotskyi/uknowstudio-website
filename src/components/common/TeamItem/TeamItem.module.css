@@ -1,0 +1,45 @@
+.itemWrap {
+  width: 100%;
+  height: 390px;
+  padding: 10px;
+
+  border: 1px solid var(--secondary-clr);
+  border-radius: var(--border-radius);
+
+  overflow: hidden;
+}
+
+.item {
+  width: 100%;
+  height: 100%;
+
+  border-radius: var(--border-radius);
+  background-color: var(--secondary-clr);
+
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  transition: all 1500ms;
+}
+
+.itemWrap:hover .image {
+  transform: scale(1.2);
+}
+
+@media screen and (min-width: 480px) {
+  .itemWrap {
+    width: 440px;
+    height: 530px;
+    padding: 15px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .itemWrap {
+    width: 470px;
+    height: 540px;
+  }
+}

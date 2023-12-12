@@ -1,3 +1,4 @@
+import TeamItem from "@/components/common/TeamItem/TeamItem";
 import css from "./index.module.css";
 
 import Section from "@/common/Section/Section";
@@ -43,16 +44,7 @@ const Team = async ({ slice }: TeamProps): Promise<JSX.Element> => {
       />
       <ul className={css.list}>
         {members.map((item) => (
-          <li className={css.itemWrap} key={item?.uid}>
-            <div className={css.item}>
-              {item?.data.image && (
-                <PrismicNextImage
-                  field={item?.data.image}
-                  className={css.image}
-                />
-              )}
-            </div>
-          </li>
+          <TeamItem key={item?.uid} item={item} className={css.itemWrap} />
         ))}
       </ul>
     </Section>
