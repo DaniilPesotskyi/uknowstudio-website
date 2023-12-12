@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import css from "./Menu.module.css";
 import { PrismicNextLink } from "@prismicio/next";
 import { GroupField } from "@prismicio/client";
@@ -8,7 +8,7 @@ import {
   SettingsDocumentDataNavigationItem,
   Simplify,
 } from "../../../../prismicio-types";
-import { motion } from "framer-motion";
+import { Variants, motion } from "framer-motion";
 
 interface IProps {
   navItems: GroupField<Simplify<SettingsDocumentDataNavigationItem>>;
@@ -17,18 +17,20 @@ interface IProps {
 const Menu: React.FC<IProps> = ({ navItems }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const backdropVariants = {
-    visible: {
+  const backdropVariants: Variants = {
+    open: {
       opacity: 1,
-      transition: {
-        delayChildren: 0.3,
-      },
     },
-    hidden: {
+    closed: { opacity: 0 },
+  };
+
+  const itemVariants: Variants = {
+    open: {
+      opacity: 1,
+      transition: { duration: 0.3 },
+    },
+    closed: {
       opacity: 0,
-      transition: {
-        delay: 0.3,
-      },
     },
   };
 
@@ -44,9 +46,8 @@ const Menu: React.FC<IProps> = ({ navItems }) => {
       {isOpen && (
         <motion.div
           className={css.backdrop}
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
+          initial="closed"
+          animate={isOpen ? "open" : "closed"}
           variants={backdropVariants}
         >
           <div className={css.container}>
@@ -57,12 +58,27 @@ const Menu: React.FC<IProps> = ({ navItems }) => {
             >
               <CloseIcon className={css.closeIcon} />
             </button>
-            <motion.nav className={css.menuList}>
+            <motion.nav
+              className={css.menuList}
+              variants={{
+                open: {
+                  transition: {
+                    delayChildren: 0.3,
+                    staggerChildren: 0.3,
+                  },
+                },
+                closed: {},
+              }}
+            >
               {navItems.map((item, index) => (
-                <motion.div key={index} className={css.link}>
+                <motion.div
+                  key={index}
+                  className={css.link}
+                  variants={itemVariants}
+                >
                   <PrismicNextLink
                     field={item.link}
-                    onClick={() => setIsOpen(!isOpen)}
+                    onClick={(e) => setIsOpen(!isOpen)}
                   >
                     {item.label}
                   </PrismicNextLink>
@@ -76,7 +92,7 @@ const Menu: React.FC<IProps> = ({ navItems }) => {
   );
 };
 
-export default Menu;
+export default React.memo(Menu);
 
 function MenuIcon({ className }: { className?: string }) {
   return (
