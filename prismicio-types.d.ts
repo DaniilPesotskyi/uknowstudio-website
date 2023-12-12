@@ -636,42 +636,42 @@ export interface HomepageHeroSliceDefaultPrimary {
   /**
    * First Word field in *Hero → Primary*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: homepage_hero.primary.first_word
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  first_word: prismic.RichTextField;
+  first_word: prismic.KeyTextField;
 
   /**
    * Second Word field in *Hero → Primary*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: homepage_hero.primary.second_word
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  second_word: prismic.RichTextField;
+  second_word: prismic.KeyTextField;
 
   /**
    * Third Word field in *Hero → Primary*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: homepage_hero.primary.third_word
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  third_word: prismic.RichTextField;
+  third_word: prismic.KeyTextField;
 
   /**
    * Fourth Word field in *Hero → Primary*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: homepage_hero.primary.fourth_word
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  fourth_word: prismic.RichTextField;
+  fourth_word: prismic.KeyTextField;
 }
 
 /**
@@ -704,42 +704,42 @@ export interface HomepageHeroSliceWithSubtextPrimary {
   /**
    * First Word field in *Hero → Primary*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: homepage_hero.primary.first_word
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  first_word: prismic.RichTextField;
+  first_word: prismic.KeyTextField;
 
   /**
    * Second Word field in *Hero → Primary*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: homepage_hero.primary.second_word
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  second_word: prismic.RichTextField;
-
-  /**
-   * Third Word field in *Hero → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: homepage_hero.primary.third_word
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  third_word: prismic.RichTextField;
+  second_word: prismic.KeyTextField;
 
   /**
    * Fourth Word field in *Hero → Primary*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: homepage_hero.primary.fourth_word
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  fourth_word: prismic.RichTextField;
+  fourth_word: prismic.KeyTextField;
+
+  /**
+   * Third Word field in *Hero → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homepage_hero.primary.third_word
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  third_word: prismic.KeyTextField;
 }
 
 /**

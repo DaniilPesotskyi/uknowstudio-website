@@ -1,3 +1,4 @@
+import HeroWord from "@/components/common/HeroWord/HeroWord";
 import css from "./index.module.css";
 
 import { Content } from "@prismicio/client";
@@ -15,33 +16,12 @@ const HomepageHero = ({ slice }: HomepageHeroProps): JSX.Element => {
     >
       <p className={clsx(css.decoLabel, css.firstLabel)}>01</p>
       <div className={css.heading}>
-        <PrismicRichText
-          field={slice.primary.first_word}
-          components={{
-            paragraph: ({ children }) => (
-              <p className={css.title}>{children}</p>
-            ),
-          }}
-        />
-        <PrismicRichText
-          field={slice.primary.second_word}
-          components={{
-            paragraph: ({ children }) => (
-              <p className={css.title}>{children}</p>
-            ),
-          }}
-        />
+        <HeroWord word={slice.primary.first_word} className={css.title} />
+        <HeroWord word={slice.primary.second_word} className={css.title} />
         {slice.variation === "withSubtext" && (
           <>
             <div className={css.fieldWithSec}>
-              <PrismicRichText
-                field={slice.primary.third_word}
-                components={{
-                  paragraph: ({ children }) => (
-                    <p className={css.title}>{children}</p>
-                  ),
-                }}
-              />
+              <HeroWord word={slice.primary.third_word} className={css.title} />
               <PrismicRichText
                 field={slice.primary.secondary_text}
                 components={{
@@ -51,36 +31,15 @@ const HomepageHero = ({ slice }: HomepageHeroProps): JSX.Element => {
                 }}
               />
             </div>
-            <PrismicRichText
-              field={slice.primary.fourth_word}
-              components={{
-                paragraph: ({ children }) => (
-                  <p className={css.title}>{children}</p>
-                ),
-              }}
-            />
+            <HeroWord word={slice.primary.fourth_word} className={css.title} />
           </>
         )}
         {slice.variation === "default" && (
           <>
             <div className={css.fieldWithSec}>
-              <PrismicRichText
-                field={slice.primary.third_word}
-                components={{
-                  paragraph: ({ children }) => (
-                    <p className={css.title}>{children}</p>
-                  ),
-                }}
-              />
+              <HeroWord word={slice.primary.third_word} className={css.title} />
             </div>
-            <PrismicRichText
-              field={slice.primary.fourth_word}
-              components={{
-                paragraph: ({ children }) => (
-                  <p className={css.title}>{children}</p>
-                ),
-              }}
-            />
+            <HeroWord word={slice.primary.fourth_word} className={css.title} />
           </>
         )}
       </div>

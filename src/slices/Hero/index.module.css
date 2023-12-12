@@ -81,19 +81,19 @@
   }
 
   .heading > .title:nth-child(1) {
-    text-align: left;
+    margin-right: auto;
   }
 
   .heading > .title:nth-child(2) {
-    text-align: right;
+    margin-left: auto;
   }
 
   .heading > .title:nth-child(3) {
-    text-align: left;
+    margin-right: auto;
   }
 
   .heading > .title:nth-child(4) {
-    text-align: right;
+    margin-left: auto;
   }
 }
 

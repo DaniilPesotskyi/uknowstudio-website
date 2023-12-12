@@ -13,39 +13,31 @@
       "imageUrl": "",
       "primary": {
         "first_word": {
-          "type": "StructuredText",
+          "type": "Text",
           "config": {
             "label": "First Word",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "single": "paragraph,strong,em"
+            "placeholder": ""
           }
         },
         "second_word": {
-          "type": "StructuredText",
+          "type": "Text",
           "config": {
             "label": "Second Word",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "single": "paragraph,strong,em"
+            "placeholder": ""
           }
         },
         "third_word": {
-          "type": "StructuredText",
+          "type": "Text",
           "config": {
             "label": "Third Word",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "single": "paragraph,strong,em"
+            "placeholder": ""
           }
         },
         "fourth_word": {
-          "type": "StructuredText",
+          "type": "Text",
           "config": {
             "label": "Fourth Word",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "single": "paragraph,em,strong"
+            "placeholder": ""
           }
         }
       },
@@ -69,39 +61,31 @@
           }
         },
         "first_word": {
-          "type": "StructuredText",
+          "type": "Text",
           "config": {
             "label": "First Word",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "single": "paragraph,strong,em"
+            "placeholder": ""
           }
         },
         "second_word": {
-          "type": "StructuredText",
+          "type": "Text",
           "config": {
             "label": "Second Word",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "single": "paragraph,strong,em"
-          }
-        },
-        "third_word": {
-          "type": "StructuredText",
-          "config": {
-            "label": "Third Word",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "single": "paragraph,strong,em"
+            "placeholder": ""
           }
         },
         "fourth_word": {
-          "type": "StructuredText",
+          "type": "Text",
           "config": {
             "label": "Fourth Word",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "single": "paragraph,em,strong"
+            "placeholder": ""
+          }
+        },
+        "third_word": {
+          "type": "Text",
+          "config": {
+            "label": "Third Word",
+            "placeholder": ""
           }
         }
       },
