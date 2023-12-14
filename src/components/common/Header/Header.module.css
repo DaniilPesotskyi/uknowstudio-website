@@ -25,26 +25,6 @@
   color: var(--main-text-clr);
 }
 
-.callBtn {
-  padding: 13px 26px;
-
-  background-color: transparent;
-  border: 1px solid var(--secondary-clr);
-  border-radius: var(--border-radius);
-
-  font-family: "Nunito", sans-serif;
-  font-size: 17px;
-  color: var(--main-text-clr);
-
-  cursor: pointer;
-  transition: all var(--transition-duration);
-}
-
-.callBtn:hover {
-  border: 1px solid var(--primary-clr);
-  background-color: var(--primary-clr);
-}
-
 @media screen and (min-width: 480px) {
   .container {
     justify-content: start;
@@ -53,10 +33,6 @@
   .logoMobile {
     font-size: 32px;
     margin-right: 40px;
-  }
-
-  .callBtn {
-    margin-left: auto;
   }
 }
 

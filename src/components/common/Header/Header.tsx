@@ -2,6 +2,7 @@ import Link from "next/link";
 import Menu from "../Menu/Menu";
 import css from "./Header.module.css";
 import { createClient } from "@/prismicio";
+import ContactsButton from "./ContactsButton/ContactsButton";
 
 const Header: React.FC = async () => {
   const client = createClient();
@@ -18,15 +19,7 @@ const Header: React.FC = async () => {
           UKNOW? studio
         </Link>
         <Menu navItems={settings.data.navigation} />
-        <button
-          // onClick={() => {
-          //   window.scrollTo({
-          //     top: document.documentElement.scrollHeight,
-          //     behavior: "smooth",
-          //   });
-          // }}
-          className={css.callBtn}
-        >{`Зв'яжіться з нами`}</button>
+        <ContactsButton />
       </div>
     </header>
   );
