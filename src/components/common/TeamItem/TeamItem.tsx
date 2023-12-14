@@ -20,7 +20,7 @@ const variants: Variants = {
     opacity: 1,
     transition: {
       duration: 0.5,
-      delay: 0.4,
+      delay: 0.2,
     },
   },
 };

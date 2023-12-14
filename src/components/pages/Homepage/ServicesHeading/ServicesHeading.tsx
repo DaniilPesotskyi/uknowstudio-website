@@ -46,7 +46,7 @@ const ServicesHeading: React.FC<IProps> = ({ title, subtitle, services }) => {
                 opacity: 1,
                 transition: {
                   duration: 0.5,
-                  delay: 0.3,
+                  delay: 0.2,
                 },
               }}
               viewport={{ once: true }}
@@ -63,9 +63,9 @@ const ServicesHeading: React.FC<IProps> = ({ title, subtitle, services }) => {
           whileInView={{
             scaleX: 1,
             transition: {
-              duration: 1,
+              duration: 1.3,
               ease: "easeInOut",
-              delay: 0.3,
+              delay: 0.2,
             },
           }}
           viewport={{ once: true }}
@@ -82,7 +82,7 @@ const ServicesHeading: React.FC<IProps> = ({ title, subtitle, services }) => {
                 opacity: 1,
                 transition: {
                   duration: 0.5,
-                  delay: 0.3,
+                  delay: 0.2,
                 },
               }}
               viewport={{ once: true }}

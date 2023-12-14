@@ -14,8 +14,9 @@ interface IProps {
 const HeroWord: React.FC<IProps> = ({ word, className }) => {
   const ref = useRef(null);
 
-  const getLetters = (): string[] => {
-    return word ? word[0].text.split("") : [];
+  const getLetters = (): KeyTextField[] => {
+    return word.split("");
+    // return word ? word[0].text.split("") : [];
   };
 
   const getRandomDelay = () => {
