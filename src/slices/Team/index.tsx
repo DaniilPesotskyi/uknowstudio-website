@@ -28,25 +28,58 @@ const Team = async ({ slice }: TeamProps): Promise<JSX.Element> => {
       number={"03"}
       containerCN={css.container}
     >
-      <PrismicRichText
-        field={slice.primary.title}
-        components={{
-          heading2: ({ children }) => <h2 className={css.title}>{children}</h2>,
-        }}
-      />
-      <PrismicRichText
-        field={slice.primary.subtitle}
-        components={{
-          paragraph: ({ children }) => (
-            <p className={css.subTitle}>{children}</p>
-          ),
-        }}
-      />
-      <ul className={css.list}>
-        {members.map((item) => (
-          <TeamItem key={item?.uid} item={item} className={css.itemWrap} />
-        ))}
-      </ul>
+      {slice.variation === "default" && (
+        <>
+          <PrismicRichText
+            field={slice.primary.title}
+            components={{
+              heading2: ({ children }) => (
+                <h2 className={css.title}>{children}</h2>
+              ),
+            }}
+          />
+          <PrismicRichText
+            field={slice.primary.subtitle}
+            components={{
+              paragraph: ({ children }) => (
+                <p className={css.subTitle}>{children}</p>
+              ),
+            }}
+          />
+          <ul className={css.list}>
+            {members.map((item) => (
+              <TeamItem
+                key={item?.uid}
+                item={item}
+                className={css.itemWrap}
+                variation={slice.variation}
+              />
+            ))}
+          </ul>
+        </>
+      )}
+      {slice.variation === "extended" && (
+        <>
+          <PrismicRichText
+            field={slice.primary.title}
+            components={{
+              heading2: ({ children }) => (
+                <h2 className={css.title}>{children}</h2>
+              ),
+            }}
+          />
+          <ul className={css.listExtended}>
+            {members.map((item) => (
+              <TeamItem
+                key={item?.uid}
+                item={item}
+                className={css.itemWrap}
+                variation={slice.variation}
+              />
+            ))}
+          </ul>
+        </>
+      )}
     </Section>
   );
 };

@@ -299,13 +299,13 @@ interface MemberDocumentData {
   /**
    * Name field in *Member*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Title
    * - **Placeholder**: *None*
    * - **API ID Path**: member.name
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  name: prismic.RichTextField;
+  name: prismic.TitleField;
 
   /**
    * Description field in *Member*
@@ -342,7 +342,10 @@ interface MemberDocumentData {
 export type MemberDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<MemberDocumentData>, "member", Lang>;
 
-type PageDocumentDataSlicesSlice = CasesListSlice | HomepageHeroSlice;
+type PageDocumentDataSlicesSlice =
+  | TeamSlice
+  | CasesListSlice
+  | HomepageHeroSlice;
 
 /**
  * Content for Page documents
