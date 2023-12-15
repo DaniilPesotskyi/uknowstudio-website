@@ -343,6 +343,7 @@ export type MemberDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<MemberDocumentData>, "member", Lang>;
 
 type PageDocumentDataSlicesSlice =
+  | ParagraphSlice
   | TeamSlice
   | CasesListSlice
   | HomepageHeroSlice;
@@ -827,6 +828,106 @@ export type HomepageHeroSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *Paragraph → Primary*
+ */
+export interface ParagraphSliceDefaultPrimary {
+  /**
+   * Title field in *Paragraph → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: paragraph.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.TitleField;
+
+  /**
+   * Subtitle field in *Paragraph → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: paragraph.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  subtitle: prismic.TitleField;
+
+  /**
+   * First Text Field field in *Paragraph → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: paragraph.primary.first_text_field
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  first_text_field: prismic.RichTextField;
+
+  /**
+   * Main Image field in *Paragraph → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: paragraph.primary.first_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  first_image: prismic.ImageField<never>;
+
+  /**
+   * Second Text Field field in *Paragraph → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: paragraph.primary.second_text_field
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  second_text_field: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *Paragraph → Items*
+ */
+export interface ParagraphSliceDefaultItem {
+  /**
+   * Secondary Image field in *Paragraph → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: paragraph.items[].secondary_images
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  secondary_images: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for Paragraph Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ParagraphSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ParagraphSliceDefaultPrimary>,
+  Simplify<ParagraphSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *Paragraph*
+ */
+type ParagraphSliceVariation = ParagraphSliceDefault;
+
+/**
+ * Paragraph Shared Slice
+ *
+ * - **API ID**: `paragraph`
+ * - **Description**: Paragraph
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ParagraphSlice = prismic.SharedSlice<
+  "paragraph",
+  ParagraphSliceVariation
+>;
+
+/**
  * Primary content in *Services → Primary*
  */
 export interface ServicesSliceDefaultPrimary {
@@ -1053,6 +1154,11 @@ declare module "@prismicio/client" {
       HomepageHeroSliceVariation,
       HomepageHeroSliceDefault,
       HomepageHeroSliceWithSubtext,
+      ParagraphSlice,
+      ParagraphSliceDefaultPrimary,
+      ParagraphSliceDefaultItem,
+      ParagraphSliceVariation,
+      ParagraphSliceDefault,
       ServicesSlice,
       ServicesSliceDefaultPrimary,
       ServicesSliceDefaultItem,

@@ -6,6 +6,7 @@ export const components = {
   cases: dynamic(() => import("./Cases")),
   cases_list: dynamic(() => import("./CasesList")),
   homepage_hero: dynamic(() => import("./Hero")),
+  paragraph: dynamic(() => import("./Paragraph")),
   services: dynamic(() => import("./Services")),
   team: dynamic(() => import("./Team")),
 };
