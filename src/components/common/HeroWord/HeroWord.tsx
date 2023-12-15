@@ -15,8 +15,10 @@ const HeroWord: React.FC<IProps> = ({ word, className }) => {
   const ref = useRef(null);
 
   const getLetters = (): KeyTextField[] => {
-    return word.split("");
-    // return word ? word[0].text.split("") : [];
+    if (word !== null) {
+      return word.split("");
+    }
+    return [];
   };
 
   const getRandomDelay = () => {
