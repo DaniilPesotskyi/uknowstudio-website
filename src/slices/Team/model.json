@@ -43,6 +43,37 @@
           }
         }
       }
+    },
+    {
+      "id": "extended",
+      "name": "Extended",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "heading2"
+          }
+        }
+      },
+      "items": {
+        "member": {
+          "type": "Link",
+          "config": {
+            "label": "Member",
+            "select": "document",
+            "customtypes": [
+              "member"
+            ]
+          }
+        }
+      }
     }
   ]
 }

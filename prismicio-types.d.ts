@@ -255,6 +255,33 @@ export type HomepageDocument<Lang extends string = string> =
   >;
 
 /**
+ * Item in *Member → Socials*
+ */
+export interface MemberDocumentDataSocialsItem {
+  /**
+   * Network field in *Member → Socials*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: member.socials[].network
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  network: prismic.SelectField<
+    "Instagram" | "TikTok" | "Facebook" | "YouTube" | "Telegram"
+  >;
+
+  /**
+   * Link field in *Member → Socials*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: member.socials[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+/**
  * Content for Member documents
  */
 interface MemberDocumentData {
@@ -279,6 +306,28 @@ interface MemberDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   name: prismic.RichTextField;
+
+  /**
+   * Description field in *Member*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: member.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Socials field in *Member*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: member.socials[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  socials: prismic.GroupField<Simplify<MemberDocumentDataSocialsItem>>;
 }
 
 /**
@@ -898,9 +947,52 @@ export type TeamSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *Team → Primary*
+ */
+export interface TeamSliceExtendedPrimary {
+  /**
+   * Title field in *Team → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.TitleField;
+}
+
+/**
+ * Primary content in *Team → Items*
+ */
+export interface TeamSliceExtendedItem {
+  /**
+   * Member field in *Team → Items*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team.items[].member
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  member: prismic.ContentRelationshipField<"member">;
+}
+
+/**
+ * Extended variation for Team Slice
+ *
+ * - **API ID**: `extended`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TeamSliceExtended = prismic.SharedSliceVariation<
+  "extended",
+  Simplify<TeamSliceExtendedPrimary>,
+  Simplify<TeamSliceExtendedItem>
+>;
+
+/**
  * Slice variation for *Team*
  */
-type TeamSliceVariation = TeamSliceDefault;
+type TeamSliceVariation = TeamSliceDefault | TeamSliceExtended;
 
 /**
  * Team Shared Slice
@@ -933,6 +1025,7 @@ declare module "@prismicio/client" {
       HomepageDocumentDataSlicesSlice,
       MemberDocument,
       MemberDocumentData,
+      MemberDocumentDataSocialsItem,
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
@@ -965,8 +1058,11 @@ declare module "@prismicio/client" {
       TeamSlice,
       TeamSliceDefaultPrimary,
       TeamSliceDefaultItem,
+      TeamSliceExtendedPrimary,
+      TeamSliceExtendedItem,
       TeamSliceVariation,
       TeamSliceDefault,
+      TeamSliceExtended,
     };
   }
 }
