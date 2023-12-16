@@ -36,7 +36,7 @@ export default function RootLayout({
     <html lang="uk">
       <body className={nunito.className}>
         <Header />
-        {children}
+        <main>{children}</main>
         <Footer />
       </body>
     </html>

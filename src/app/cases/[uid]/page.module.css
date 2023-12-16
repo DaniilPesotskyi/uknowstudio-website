@@ -1,0 +1,22 @@
+.title {
+  margin-top: 100px;
+  margin-bottom: 35px;
+
+  font-size: 50px;
+  font-weight: 600;
+  color: var(--main-text-clr);
+  text-align: center;
+}
+
+.subtitle {
+  margin-bottom: 435px;
+
+  font-size: 40px;
+  font-weight: 400;
+  color: var(--main-text-clr);
+  text-align: center;
+}
+
+.selection {
+  color: var(--primary-clr);
+}
