@@ -4,6 +4,7 @@ import Section from "@/common/Section/Section";
 import { Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import clsx from "clsx";
 
 export type ParagraphProps = SliceComponentProps<Content.ParagraphSlice>;
 
@@ -28,7 +29,7 @@ const Paragraph = ({ slice }: ParagraphProps): JSX.Element => {
             field={slice.primary.subtitle}
             components={{
               heading3: ({ children }) => (
-                <h3 className={css.title}>{children}</h3>
+                <h3 className={css.subTitle}>{children}</h3>
               ),
             }}
           />
@@ -36,14 +37,14 @@ const Paragraph = ({ slice }: ParagraphProps): JSX.Element => {
             field={slice.primary.first_text_field}
             components={{
               paragraph: ({ children }) => (
-                <p className={css.title}>{children}</p>
+                <p className={css.text}>{children}</p>
               ),
             }}
           />
         </div>
         <div className={css.imageWrapper}>
           <PrismicNextImage
-            className={css.image}
+            className={css.mainImage}
             field={slice.primary.first_image}
           />
         </div>
@@ -51,9 +52,20 @@ const Paragraph = ({ slice }: ParagraphProps): JSX.Element => {
       <PrismicRichText
         field={slice.primary.first_text_field}
         components={{
-          paragraph: ({ children }) => <p className={css.title}>{children}</p>,
+          paragraph: ({ children }) => (
+            <p className={clsx(css.text, css.textMb)}>{children}</p>
+          ),
         }}
       />
+      <div className={clsx(css.imageWrapper, css.iwg)}>
+        {slice.items.map((i, index) => (
+          <PrismicNextImage
+            key={index}
+            className={css.mainImage}
+            field={i.secondary_images}
+          />
+        ))}
+      </div>
     </Section>
   );
 };
