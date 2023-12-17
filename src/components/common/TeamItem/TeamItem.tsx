@@ -34,7 +34,7 @@ const TeamItem: React.FC<IProps> = ({ item, className, variation }) => {
       initial="hidden"
       whileInView={"visible"}
       viewport={{ once: true }}
-      className={clsx(className, variation === "extended" && css.extended)}
+      className={clsx(css.itemWrap, className, variation === "extended" && css.extended)}
       key={item?.uid}
     >
       {variation === "default" && (

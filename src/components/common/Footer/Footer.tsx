@@ -17,6 +17,7 @@ const Footer: React.FC = async () => {
     <footer className={css.footer}>
       <a href="mailto:uknowstudio@gmail.com" className={css.contactForm}>
         <p className={css.contactEmail}>uknowstudio@gmail.com</p>
+        <MailIcon className={css.mailIcon} />
       </a>
       <div className={css.container}>
         <div className={css.logoWrap}>
@@ -145,6 +146,20 @@ function YoutubeIcon({ className }: { className?: string }) {
         d="M14.078 33.821a3.21 3.21 0 01-1.304-.752 3.109 3.109 0 01-.803-1.255c-.917-2.455-1.19-12.705.578-14.729a3.428 3.428 0 012.31-1.128c4.741-.497 19.388-.431 21.07.166.473.15.905.402 1.264.738.36.337.636.747.809 1.203 1.002 2.538 1.036 11.76-.136 14.198a3.173 3.173 0 01-1.478 1.46c-1.767.862-19.965.845-22.31.099zm7.527-4.81l8.496-4.313-8.496-4.345v8.658z"
         clipRule="evenodd"
       ></path>
+    </svg>
+  );
+}
+
+function MailIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+      width="98"
+      height="98"
+      fill="none"
+    >
+      <path d="M18.845 77.583c-1.879 0-3.447-.629-4.704-1.886-1.26-1.26-1.891-2.83-1.891-4.708V27.01c0-1.878.63-3.446 1.89-4.704 1.258-1.26 2.826-1.89 4.705-1.89h60.31c1.879 0 3.447.63 4.704 1.89 1.26 1.258 1.891 2.826 1.891 4.704v43.98c0 1.878-.629 3.446-1.886 4.704-1.26 1.26-2.83 1.89-4.709 1.89h-60.31zM49 49.47L16.333 28.114v42.875c0 .732.236 1.334.707 1.804.47.471 1.072.707 1.805.707h60.31c.733 0 1.334-.236 1.805-.707.471-.47.707-1.072.707-1.804V28.114L49 49.469zm0-4.553L80.409 24.5H17.591L49 44.916zM16.333 28.114V24.5v46.489c0 .732.236 1.334.707 1.804.47.471 1.072.707 1.805.707h-2.512V28.114z"></path>
     </svg>
   );
 }

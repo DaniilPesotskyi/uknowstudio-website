@@ -26,6 +26,10 @@
   display: none;
 }
 
+.mailIcon {
+  fill: var(--stroke-clr);
+}
+
 .container {
   display: flex;
   align-items: center;
@@ -131,6 +135,12 @@
   .logoMobile {
     font-size: 32px;
     margin-right: 40px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .mailIcon {
+    display: none;
   }
 }
 
